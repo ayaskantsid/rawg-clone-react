@@ -14,6 +14,9 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
 
   if (error) return null;
 
+  const isSelectedPlatform = (platform: Platform) =>
+    platform.id === selectedPlatform?.id;
+
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
@@ -30,6 +33,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
                 onClick={() => onSelectPlatform(platform)}
                 key={platform.id}
                 value={platform.name}
+                fontWeight={isSelectedPlatform(platform) ? 'bold' : 'normal'}
               >
                 {platform.name}
               </Menu.Item>
