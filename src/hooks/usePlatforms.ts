@@ -1,5 +1,5 @@
 import platforms from '@/data/platforms';
-import APIClient from '@/services/api-client';
+import APIClient, { FetchResponse } from '@/services/api-client';
 import { useQuery } from '@tanstack/react-query';
 
 export interface Platform {
@@ -11,9 +11,9 @@ export interface Platform {
 const apiClient = new APIClient<Platform>('/platforms/lists/parents');
 
 const usePlatforms = () =>
-  useQuery<Platform[]>({
+  useQuery<FetchResponse<Platform>>({
     queryKey: ['platforms'],
-    queryFn: () => apiClient.getAll().then((response) => response.results),
+    queryFn: () => apiClient.getAll(),
     staleTime: 24 * 60 * 60 * 1000, //24 hours
     initialData: platforms,
   });
