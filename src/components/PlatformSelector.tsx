@@ -1,5 +1,4 @@
 import { Button, Menu, Portal } from '@chakra-ui/react';
-import React from 'react';
 import { BsChevronDown } from 'react-icons/bs';
 import usePlatforms from '@/hooks/usePlatforms';
 import { Platform } from '@/hooks/useGames';
@@ -28,7 +27,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
       <Portal>
         <Menu.Positioner>
           <Menu.Content>
-            {data.map((platform) => (
+            {data?.map((platform) => (
               <Menu.Item
                 onClick={() => onSelectPlatform(platform)}
                 key={platform.id}
