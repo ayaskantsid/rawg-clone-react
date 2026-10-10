@@ -3,11 +3,7 @@ import logo from '../assets/logo.webp';
 import { ColorModeButton } from './ui/color-mode';
 import SearchInput from './SearchInput';
 
-interface Props {
-  onSearch: (searchText: string) => void;
-}
-
-const NavBar = ({ onSearch }: Props) => {
+const NavBar = () => {
   const handleLogoClick = () => {
     window.location.reload();
   };
@@ -28,7 +24,7 @@ const NavBar = ({ onSearch }: Props) => {
       >
         RAWG
       </Text>
-      <SearchInput onSearch={onSearch} />
+      <SearchInput />
       <ColorModeButton />
     </HStack>
   );
