@@ -30,11 +30,7 @@ const GameGrid = () => {
       hasMore={!!hasNextPage}
       loader={null}
     >
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        gap={6}
-        padding='10px'
-      >
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} gap={6}>
         {isLoading &&
           skeletons.map((s) => (
             <GameCardContainer key={s}>
