@@ -9,7 +9,7 @@ const GameScreenshots = ({ gameId }: Props) => {
   if (isLoading) return <Spinner />;
   if (error) return null;
   return (
-    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={3}>
+    <SimpleGrid columns={{ base: 1, md: 2 }} gap={3}>
       {data?.results.map((file) => (
         <Image key={file.id} src={file.image} />
       ))}
