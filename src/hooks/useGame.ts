@@ -1,6 +1,6 @@
 import APIClient from '@/services/api-client';
 import { useQuery } from '@tanstack/react-query';
-import { Game } from '../entities/Game';
+import Game from '../entities/Game';
 import ms from 'ms';
 
 //TODO: handle inteface dependency later
