@@ -1,10 +1,14 @@
 import { Box, HStack, Image, Text } from '@chakra-ui/react';
-import logo from '../assets/logo.webp';
-import { ColorModeButton } from './ui/color-mode';
+import logoLight from '../assets/logo-light.webp';
+import logoDark from '../assets/logo-dark.webp';
+import { ColorModeButton, useColorMode } from './ui/color-mode';
 import SearchInput from './SearchInput';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
+  const { colorMode } = useColorMode();
+  const logoSrc = colorMode === 'dark' ? logoLight : logoDark;
+
   return (
     <HStack justifyContent='space-between' padding='10px'>
       <Link
@@ -18,7 +22,7 @@ const NavBar = () => {
           textDecoration: 'none',
         }}
       >
-        <Image src={logo} h={{ base: '42px', sm: '50px' }} />
+        <Image src={logoSrc} h={{ base: '42px', sm: '50px' }} />
         <Text
           fontWeight='extrabold'
           letterSpacing='5px'
