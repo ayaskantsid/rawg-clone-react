@@ -3,7 +3,11 @@ import useGameQueryStore from '@/store';
 import { Button, Heading, HStack, Image, List } from '@chakra-ui/react';
 import GenreListSkeleton from './GenreListSkeleton';
 
-const GenreList = () => {
+interface Props {
+  onSelectGenre?: () => void;
+}
+
+const GenreList = ({ onSelectGenre }: Props) => {
   const { data, error, isLoading } = useGenres();
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
   const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
@@ -13,7 +17,7 @@ const GenreList = () => {
 
   return (
     <>
-      <Heading fontSize='2xl' marginBottom={3}>
+      <Heading hideBelow='lg' fontSize='2xl' marginBottom={3}>
         Genres
       </Heading>
       <List.Root variant='plain'>
@@ -32,7 +36,10 @@ const GenreList = () => {
               <Button
                 fontSize='lg'
                 variant='plain'
-                onClick={() => setSelectedGenreId(genre.id)}
+                onClick={() => {
+                  setSelectedGenreId(genre.id);
+                  onSelectGenre?.();
+                }}
                 fontWeight={selectedGenreId === genre.id ? 'bold' : 'normal'}
                 whiteSpace='normal'
                 textAlign='left'
